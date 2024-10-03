@@ -1,6 +1,9 @@
 import os
 
-carros = []
+carros = [ {'nome':'Cruze', 'marca':'Chevrolet','ativo':'True'},
+           {'nome':'Corsa', 'marca':'Chevrolet','ativo':'True'},
+           {'nome':'Onix', 'marca':'Chevrolet','ativo':'False'},
+           {'nome':'Nivus', 'marca':'Volkswagen','ativo':'True'}]
 
 def exibir_subtitulo(texto):
     os.system('cls')
@@ -12,7 +15,7 @@ def retorna_menu_principal():
      main()
 
 def mostra_titulo():
-    print("""
+    print('''
             
     ██████╗░██╗░░██╗░█████╗░██████╗░░██████╗
     ██╔══██╗██║░██╔╝██╔══██╗██╔══██╗██╔════╝
@@ -21,7 +24,7 @@ def mostra_titulo():
     ██║░░██║██║░╚██╗██║░░██║██║░░██║██████╔╝
     ╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░
 
-        """)
+        ''')
     
 def mostra_escolha():
     print('1. Cadastro de carros')
@@ -37,7 +40,7 @@ def escolhe_opcao():
         if opcao_escolhida == 1:
             cadastrar_carros()
         elif opcao_escolhida == 2:
-            mostrar_carros
+            mostrar_carros()
         elif opcao_escolhida == 3:
             print('Ativar/desativar carro')
         elif opcao_escolhida == 4:
@@ -54,17 +57,20 @@ def cadastrar_carros():
     nome_carro = input('Digite o nome do carro: ')
     carros.append(nome_carro)
     print(f'{nome_carro} foi adicionado a lista de carros')
-    input('Digite qualquer tecla para voltar')
-    main()
+
+    retorna_menu_principal()
 
 def mostrar_carros():
     exibir_subtitulo('Listar carros')
-    
-    for carro in carros:
-         print(f' - carro')
 
-    input('Digite qualquer tecla para voltar')
-    main()
+    for carro in carros:
+         print(f'-{carro}')
+         nome_carro = ['nome']
+         marca = carro ['marca']
+         ativo = carro['ativo']
+         print(f'-{nome_carro} | {marca} | {ativo}')
+
+    retorna_menu_principal()
 
 def finalizar_programa():
         os. syatem('cls')
@@ -72,8 +78,7 @@ def finalizar_programa():
 
 def opcao_invalida():
         print('Este caracter não é permitido')
-        input('Digite qualquer tecla')
-        main()
+        retorna_menu_principal()
 
 def main():
     mostra_titulo()
